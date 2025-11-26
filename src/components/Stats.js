@@ -2,7 +2,7 @@ export default function Stats({ items }) {
   if (!items.length) {
     return (
       <p className="stats">
-        <em>Mag isip na tayo babe ng dadalin 😎</em>
+        <em>Babe ingat ka dyan ha 😎</em>
       </p>
     );
   }
@@ -14,7 +14,7 @@ export default function Stats({ items }) {
     <footer className="stats">
       <em>
         {percentage === 100
-          ? `Kumpleto na ang lahat, Maari na kayong maglakbay hehe 🛩️`
+          ? `Everything is complete, ako nalang 🥲`
           : `💼 You have ${numItems} items in your list, and you already packed 
         ${numPacked} (${percentage}%)`}
       </em>
