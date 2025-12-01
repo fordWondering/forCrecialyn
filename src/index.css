@@ -1,5 +1,8 @@
+/* ----------------- GOOGLE FONTS (unchanged) ----------------- */
 @import url("https://fonts.googleapis.com/css2?family=Monoton&family=Quicksand:wght@500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap");
 
+/* ----------------- RESET ----------------- */
 * {
   margin: 0;
   padding: 0;
@@ -7,70 +10,94 @@
 }
 
 html {
-  font-size: 62.5%;
+  font-size: 62.5%; /* unchanged, allows rem scaling */
 }
 
+/* ----------------- BODY ----------------- */
 body {
   font-size: 2.4rem;
-  font-family: sans-serif;
+  font-family: "Quicksand", sans-serif;
   color: #5a3e2b;
-  font-family: "Quicksand";
   font-weight: 500;
+  line-height: 1.5; /* ADDED for better text spacing on small screens */
 }
 
+/* ----------------- APP CONTAINER ----------------- */
 .app {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh; /* CHANGED from height: 100vh to min-height for responsive scaling */
   display: grid;
   grid-template-rows: auto auto 1fr auto;
 }
 
-h1 {
+/* ----------------- HEADER / H1 ----------------- */
+.h1text {
+  background: linear-gradient(270deg, #89f7fe, #66a6ff, #4b1bd9, #fad0c4);
+  background-size: 800% 800%;
+  animation: skyMove 12s ease infinite;
+
   text-align: center;
-  background-color: #f4a226;
-  font-family: "san-serif";
-  font-size: 8rem;
+  font-family: "Bodoni Moda", serif;
+
+  font-size: clamp(3rem, 8vw, 8rem); /* CHANGED: responsive font scaling */
   text-transform: uppercase;
-  font-weight: 400;
-  word-spacing: 30px;
-  letter-spacing: -5px;
-  padding: 2.4rem 0;
-}
-p.extra {
-  /* margin-top: 0; */
-  /* margin-bottom: 0; */
-  /* align-items: center; */
-  justify-content: center;
-  display: flex;
-  /* text-align: center; */
-  background-color: #f4a226;
+  font-weight: 500;
+  word-spacing: 3vw; /* CHANGED: responsive word spacing */
+  letter-spacing: -0.1rem; /* slightly adjusted */
+  padding: 2rem 0; /* CHANGED from fixed 2.4rem */
+  color: rgb(225, 128, 218);
 }
 
-.add-form {
-  background-color: #e5771f;
-  padding: 2.8rem 0;
+/* Keyframes unchanged */
+@keyframes skyMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ----------------- EXTRA PARAGRAPH ----------------- */
+p.extra {
   display: flex;
+  justify-content: center;
+  background-color: #f4a226;
+  padding: 1rem; /* CHANGED: added padding for small screens */
+  font-size: clamp(1.6rem, 2vw, 2.4rem); /* CHANGED: responsive font */
+}
+
+/* ----------------- ADD FORM ----------------- */
+.add-form {
+  background: linear-gradient(180deg, #89f7fe 0%, #66a6ff 100%);
+  padding: 2rem 1rem; /* CHANGED: padding adjusted for small screens */
+  display: flex;
+  flex-wrap: wrap; /* CHANGED: allows wrapping on smaller devices */
   align-items: center;
   justify-content: center;
-  gap: 0.8rem;
+  gap: 1rem; /* CHANGED: smaller gap for mobile */
 }
 
-h3 {
+.add-form h3 {
   margin-right: 1.6rem;
-  font-size: 2.4rem;
+  font-size: clamp(1.8rem, 2.5vw, 2.4rem); /* CHANGED: responsive font */
+  color: rgb(49, 83, 160);
 }
 
 button,
 select,
 input {
-  background-color: #ffebb3;
-  color: #5a3e2b;
+  background-color: #afbad7;
+  color: #e35664e9;
   font-family: inherit;
   border: none;
   border-radius: 10rem;
-  padding: 1.2rem 3.2rem;
+  padding: 1rem 2.5rem; /* CHANGED: slightly smaller padding for mobile */
   font-weight: 700;
-  font-size: 1.8rem;
+  font-size: 1.6rem; /* CHANGED: responsive */
   cursor: pointer;
 }
 
@@ -79,43 +106,47 @@ input {
   background-color: #76c7ad;
 }
 
+/* ----------------- LIST SECTION ----------------- */
 .list {
-  background-color: #5a3e2b;
-  color: #ffebb3;
-  padding: 4rem 0;
-
+  background: linear-gradient(
+    90deg,
+    #0077be,
+    #00b4d8,
+    #90e0ef,
+    #00b4d8,
+    #0077be
+  );
+  background-size: 400% 400%;
+  animation: wave 6s ease infinite;
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
-  gap: 3.2rem;
+  justify-content: flex-start;
+  gap: 2rem; /* CHANGED: reduced gap for smaller screens */
   align-items: center;
+  padding: 3rem 1rem; /* CHANGED: padding responsive */
+  color: #ffebb3;
 }
 
-.actions button,
-.list select {
-  text-transform: uppercase;
-  padding: 0.8rem 2.4rem;
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin: 0 0.8rem;
-}
+/*  */
 
 .list ul {
   list-style: none;
-  width: 80%;
-  /* overflow: scroll; */
-
+  width: 100%;
+  max-width: 1200px; /* CHANGED: limits width for large screens */
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.2rem;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(220px, 1fr)
+  ); /* CHANGED: responsive columns */
+  gap: 1rem;
   justify-content: center;
-  align-content: start;
 }
 
 .list li {
   display: flex;
   align-items: center;
-  gap: 1.2rem;
+  gap: 1rem;
+  flex-wrap: wrap; /* CHANGED: wrap items on small screens */
 }
 
 input[type="checkbox"] {
@@ -128,14 +159,74 @@ input[type="checkbox"] {
   cursor: pointer;
   background: none;
   border: none;
-  font-size: 1.8rem;
-  padding: 0.8rem;
+  font-size: 1.6rem; /* CHANGED: responsive size */
+  padding: 0.5rem; /* CHANGED: smaller padding */
   transform: translateY(2px);
 }
+.actions select option {
+  display: flex;
+  flex-direction: column; /* stack items vertically */
 
+  justify-content: flex-end;
+}
+.actions button,
+.list select {
+  text-transform: uppercase;
+  padding: 0.8rem 2rem; /* CHANGED: adjusted for mobile */
+  font-size: 1.4rem; /* CHANGED: responsive */
+  font-weight: 700;
+  margin: 0 0.5rem;
+}
+
+/* ----------------- STATS ----------------- */
 .stats {
-  background-color: #76c7ad;
+  background: #f4d6a0;
   text-align: center;
   font-weight: 700;
-  padding: 3.2rem 0;
+  padding: 2rem 1rem; /* CHANGED: smaller padding */
+  color: rgb(112, 86, 130);
+  font-size: clamp(1.8rem, 2vw, 2.4rem); /* CHANGED: responsive font */
+}
+
+/* ----------------- MEDIA QUERIES ----------------- */
+
+/* Tablets (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .h1text {
+    font-size: clamp(2.5rem, 6vw, 6rem); /* smaller header */
+    word-spacing: 2vw;
+  }
+
+  .add-form {
+    flex-direction: column; /* stack elements */
+    gap: 1rem;
+  }
+}
+
+/* Phones (max-width: 480px) */
+@media (max-width: 480px) {
+  .h1text {
+    font-size: clamp(2rem, 8vw, 4rem);
+    word-spacing: 1vw;
+    letter-spacing: -0.05rem;
+    padding: 1rem 0;
+  }
+
+  .add-form h3,
+  .add-form button,
+  .add-form input,
+  .add-form select {
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    padding: 0.8rem 1.5rem;
+  }
+
+  .list ul {
+    grid-template-columns: 1fr; /* stack list items vertically */
+    gap: 0.8rem;
+  }
+
+  .stats {
+    font-size: clamp(1.6rem, 3vw, 2rem);
+    padding: 1.5rem 1rem;
+  }
 }
